@@ -1,89 +1,49 @@
-// CONFIGURAÇÃO DE LOGIN
-const USER = 'admin';
-const PASS = '1234';
+const form = document.getElementById('pageForm');
+const output = document.getElementById('output');
 
-const showAdminBtn = document.getElementById('showAdminBtn');
-const loginForm = document.getElementById('loginForm');
-const loginBtn = document.getElementById('loginBtn');
-const loginMsg = document.getElementById('loginMsg');
-const adminPanel = document.getElementById('adminPanel');
-const gallery = document.getElementById('gallery');
-
-showAdminBtn.addEventListener('click', () => loginForm.style.display = 'block');
-
-loginBtn.addEventListener('click', () => {
-  const name = document.getElementById('adminName').value;
-  const pass = document.getElementById('adminPass').value;
-  if(name === USER && pass === PASS){
-    loginForm.style.display = 'none';
-    adminPanel.style.display = 'block';
-    renderGallery();
-  } else {
-    loginMsg.textContent = 'Usuário ou senha incorretos';
-  }
-});
-
-// CARREGAR IMAGENS DO LOCALSTORAGE
-let images = JSON.parse(localStorage.getItem('images')) || [];
-
-// FUNÇÃO RENDERIZAR GALERIA
-function renderGallery(category = 'Todos'){
-  gallery.innerHTML = '';
-  images.forEach((img,index) => {
-    if(category === 'Todos' || img.category === category){
-      gallery.innerHTML += `
-        <div class="card">
-          <a href="${img.link}" target="_blank">
-            <img src="${img.img}" alt="${img.alt}">
-          </a>
-          <p>${img.description}</p>
-          ${adminPanel.style.display === 'block' ? `<button onclick="editImage(${index})">Editar</button>
-          <button onclick="deleteImage(${index})">Excluir</button>` : ''}
-        </div>`;
-    }
-  });
-}
-
-// FILTRAR POR CATEGORIA
-function filterCategory(category){
-  renderGallery(category);
-}
-
-// ADICIONAR IMAGEM
-const addForm = document.getElementById('addImageForm');
-addForm.addEventListener('submit', e => {
+form.addEventListener('submit', e => {
   e.preventDefault();
-  const newImage = {
-    title: addForm.title.value,
-    category: addForm.category.value,
-    link: addForm.link.value,
-    img: addForm.img.value,
-    alt: addForm.alt.value,
-    description: addForm.description.value
-  };
-  images.push(newImage);
-  localStorage.setItem('images', JSON.stringify(images));
-  addForm.reset();
-  renderGallery();
+
+  const pageTitle = document.getElementById('pageTitle').value;
+  const imageTitle = document.getElementById('imageTitle').value;
+  const imageURL = document.getElementById('imageURL').value;
+  const imageAlt = document.getElementById('imageAlt').value;
+  const imageDescription = document.getElementById('imageDescription').value;
+  const category = document.getElementById('category').value;
+  const link = document.getElementById('link').value;
+
+  const html = `
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<title>${pageTitle} – ${imageTitle}</title>
+<meta name="description" content="${imageDescription}">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="${imageTitle}">
+<meta property="og:description" content="${imageDescription}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="${imageURL}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${imageTitle}">
+<meta name="twitter:description" content="${imageDescription}">
+<meta name="twitter:image" content="${imageURL}">
+<style>
+body { font-family: Arial, sans-serif; background:#111; color:#fff; margin:0; padding:20px; }
+h1,h2 { text-align:center; }
+img { display:block; margin:20px auto; max-width:100%; height:auto; }
+p { max-width:600px; margin:10px auto; font-size:16px; line-height:1.4; }
+a { color:#00bcd4; text-decoration:none; display:block; text-align:center; margin:10px 0; }
+</style>
+</head>
+<body>
+<h1>${imageTitle}</h1>
+<p>Categoria: ${category}</p>
+<a href="${link}" target="_blank"><img src="${imageURL}" alt="${imageAlt}"></a>
+<p>${imageDescription}</p>
+<a href="https://seusitegithub.github.io/">Voltar ao site principal</a>
+</body>
+</html>`;
+
+  output.textContent = html.trim();
 });
-
-// EDITAR / EXCLUIR
-function deleteImage(index){
-  images.splice(index,1);
-  localStorage.setItem('images', JSON.stringify(images));
-  renderGallery();
-}
-
-function editImage(index){
-  const img = images[index];
-  addForm.title.value = img.title;
-  addForm.category.value = img.category;
-  addForm.link.value = img.link;
-  addForm.img.value = img.img;
-  addForm.alt.value = img.alt;
-  addForm.description.value = img.description;
-  deleteImage(index);
-}
-
-// RENDER INICIAL
-renderGallery();
