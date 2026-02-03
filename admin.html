@@ -3,175 +3,97 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gerador SEO Profissional</title>
+<title>Gerador SEO</title>
 
 <style>
-body{font-family:Arial;background:#0d0d0d;color:#fff;margin:0;padding:20px}
+body{font-family:Arial;background:#111;color:#fff;margin:0;padding:20px}
 section{background:#1c1c1c;padding:15px;margin-bottom:20px;border-radius:8px}
 input,textarea{width:100%;padding:10px;margin:5px 0 15px;border:none;border-radius:5px}
-button{width:100%;padding:12px;font-weight:bold;background:#00bcd4;border:none;border-radius:5px;cursor:pointer}
-textarea#output{height:420px;background:#000;color:#00ff00;font-family:monospace}
+button{width:100%;padding:12px;background:#00bcd4;border:none;font-weight:bold;cursor:pointer;border-radius:5px}
+textarea#output{height:400px;background:#000;color:#0f0;font-family:monospace}
 h1{text-align:center}
 </style>
 </head>
 
 <body>
 
-<h1>Gerador SEO Profissional</h1>
+<h1>Gerador de Página SEO</h1>
 
 <section>
-<h2>SEO Principal</h2>
-
 <label>Título</label>
 <input id="title">
 
 <label>Descrição</label>
 <textarea id="desc"></textarea>
 
-<label>Palavras-chave</label>
-<input id="keys">
-
 <label>URL</label>
 <input id="url">
 
-<label>Imagem principal</label>
+<label>Imagem</label>
 <input id="img">
 
 <label>Alt da imagem</label>
 <input id="alt">
-</section>
-
-<section>
-<h2>Conteúdo</h2>
 
 <label>H1</label>
 <input id="h1">
 
-<label>Resumo (H2)</label>
-<textarea id="h2text"></textarea>
+<label>Texto principal</label>
+<textarea id="text"></textarea>
 
-<label>Detalhes (H3)</label>
-<textarea id="h3text"></textarea>
-
-<label>Links internos (separar por vírgula)</label>
+<label>Links internos (separados por vírgula)</label>
 <input id="links">
 </section>
 
 <button onclick="gerar()">GERAR HTML</button>
 
 <section>
-<h2>Código Final</h2>
 <textarea id="output"></textarea>
 </section>
 
 <script>
 function gerar(){
 
-const title = document.getElementById("title").value;
-const desc = document.getElementById("desc").value;
-const keys = document.getElementById("keys").value;
-const url = document.getElementById("url").value;
-const img = document.getElementById("img").value;
-const alt = document.getElementById("alt").value;
-const h1 = document.getElementById("h1").value;
-const h2text = document.getElementById("h2text").value;
-const h3text = document.getElementById("h3text").value;
-const linksRaw = document.getElementById("links").value;
+var title = document.getElementById("title").value;
+var desc = document.getElementById("desc").value;
+var url = document.getElementById("url").value;
+var img = document.getElementById("img").value;
+var alt = document.getElementById("alt").value;
+var h1 = document.getElementById("h1").value;
+var text = document.getElementById("text").value;
+var linksRaw = document.getElementById("links").value;
 
-const links = linksRaw.split(",");
-let linksHTML = "";
+var links = linksRaw.split(",");
+var lista = "";
 
-for(let i=0;i<links.length;i++){
-if(links[i].trim() !== ""){
-linksHTML += `<li><a href="${links[i].trim()}">${links[i].trim()}</a></li>`;
+for(var i=0;i<links.length;i++){
+if(links[i].trim()!=""){
+lista += "<li><a href='"+links[i].trim()+"'>"+links[i].trim()+"</a></li>";
 }
 }
 
-const html = `<!DOCTYPE html>
-<html lang="pt-PT">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>${title}</title>
-<meta name="description" content="${desc}">
-<meta name="keywords" content="${keys}">
-<meta name="robots" content="index, follow">
-
-<meta property="og:title" content="${title}">
-<meta property="og:description" content="${desc}">
-<meta property="og:url" content="${url}">
-<meta property="og:image" content="${img}">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${title}">
-<meta name="twitter:description" content="${desc}">
-<meta name="twitter:image" content="${img}">
-
-<link rel="preload" as="image" href="${img}">
-
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"Article",
-"headline":"${title}",
-"description":"${desc}",
-"image":"${img}",
-"mainEntityOfPage":"${url}"
-}
-</script>
-
-<style>
-body{font-family:Arial;background:#111;color:#fff;margin:0}
-header{background:#000;padding:15px;text-align:center}
-nav a{color:#00bcd4;margin:0 10px;text-decoration:none}
-main{max-width:1000px;margin:auto;padding:20px}
-img{max-width:100%;border-radius:6px;display:block;margin:20px auto}
-.card{background:#1c1c1c;padding:15px;border-radius:8px;margin-top:20px}
-footer{text-align:center;background:#000;padding:20px;margin-top:40px}
-</style>
-
-</head>
-
-<body>
-
-<header>
-<nav>
-<a href="index.html">Home</a>
-<a href="filmes.html">Filmes</a>
-<a href="noticias.html">Notícias</a>
-</nav>
-</header>
-
-<main>
-
-<h1>${h1}</h1>
-
-<img src="${img}" alt="${alt}" loading="lazy">
-
-<div class="card">
-<h2>Resumo</h2>
-<p>${h2text}</p>
-</div>
-
-<div class="card">
-<h3>Detalhes</h3>
-<p>${h3text}</p>
-</div>
-
-<div class="card">
-<h2>Links relacionados</h2>
-<ul>${linksHTML}</ul>
-</div>
-
-</main>
-
-<footer>
-<p>© 2026 SeuSite</p>
-</footer>
-
-</body>
-</html>`;
+var html = "";
+html += "<!DOCTYPE html>\n";
+html += "<html lang='pt-PT'>\n<head>\n";
+html += "<meta charset='UTF-8'>\n";
+html += "<meta name='viewport' content='width=device-width, initial-scale=1.0'>\n";
+html += "<title>"+title+"</title>\n";
+html += "<meta name='description' content='"+desc+"'>\n";
+html += "<meta property='og:title' content='"+title+"'>\n";
+html += "<meta property='og:description' content='"+desc+"'>\n";
+html += "<meta property='og:url' content='"+url+"'>\n";
+html += "<meta property='og:image' content='"+img+"'>\n";
+html += "<style>body{font-family:Arial;background:#111;color:#fff;margin:0}main{max-width:1000px;margin:auto;padding:20px}img{max-width:100%;display:block;margin:20px auto;border-radius:6px}footer{text-align:center;background:#000;padding:20px;margin-top:40px}</style>\n";
+html += "</head>\n<body>\n";
+html += "<main>\n";
+html += "<h1>"+h1+"</h1>\n";
+html += "<img src='"+img+"' alt='"+alt+"' loading='lazy'>\n";
+html += "<p>"+text+"</p>\n";
+html += "<h2>Links relacionados</h2>\n<ul>"+lista+"</ul>\n";
+html += "<p><a href='index.html'>Voltar para Home</a></p>\n";
+html += "</main>\n";
+html += "<footer>© 2026 SeuSite</footer>\n";
+html += "</body>\n</html>";
 
 document.getElementById("output").value = html;
 }
@@ -179,4 +101,5 @@ document.getElementById("output").value = html;
 
 </body>
 </html>
+
 
