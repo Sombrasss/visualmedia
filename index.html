@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
-  <meta charset="UTF-8">
-  <title>MediaPosters – Posters e Imagens de Filmes</title>
-  <meta name="description" content="MediaPosters – Galeria de posters, capas e imagens de filmes e séries, otimizada para SEO.">
-  <meta name="robots" content="index, follow">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>MediaPosters – Multi-Categorias</title>
+<meta name="description" content="MediaPosters – Galeria de imagens de filmes, música, jogos, notícias e muito mais, otimizada para SEO.">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>MediaPosters – Galeria de Filmes</h1>
+<h1>MediaPosters – Galeria Multi-Categorias</h1>
+
+<!-- Categorias -->
+<div class="categories">
+  <button class="category-btn" onclick="filterCategory('Todos')">Todos</button>
+  <button class="category-btn" onclick="filterCategory('Filmes')">Filmes</button>
+  <button class="category-btn" onclick="filterCategory('Música')">Música</button>
+  <button class="category-btn" onclick="filterCategory('Jogos')">Jogos</button>
+  <button class="category-btn" onclick="filterCategory('Notícias')">Notícias</button>
+  <button class="category-btn" onclick="filterCategory('Outros')">Outros</button>
+</div>
 
 <!-- Botão admin oculto -->
 <button id="showAdminBtn">🔒 Login Admin</button>
@@ -25,9 +35,9 @@
 <!-- Painel admin -->
 <div id="adminPanel" style="display:none;">
   <form id="addImageForm">
-    <input type="text" id="title" placeholder="Título do filme" required>
-    <input type="text" id="year" placeholder="Ano" required>
-    <input type="url" id="link" placeholder="Link do filme" required>
+    <input type="text" id="title" placeholder="Título da imagem" required>
+    <input type="text" id="category" placeholder="Categoria (Filmes, Música, Jogos...)" required>
+    <input type="url" id="link" placeholder="Link" required>
     <input type="url" id="img" placeholder="URL da imagem" required>
     <input type="text" id="alt" placeholder="ALT da imagem" required>
     <textarea id="description" placeholder="Descrição da imagem" required></textarea>
@@ -35,7 +45,7 @@
   </form>
 </div>
 
-<h2>Galeria de Filmes</h2>
+<h2>Galeria</h2>
 <div class="grid" id="gallery"></div>
 
 <script src="script.js"></script>
