@@ -2,51 +2,26 @@
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<title>MediaPosters – Multi-Categorias</title>
-<meta name="description" content="MediaPosters – Galeria de imagens de filmes, música, jogos, notícias e muito mais, otimizada para SEO.">
-<meta name="robots" content="index, follow">
+<title>Gerador de Páginas HTML para Imagens</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>MediaPosters – Galeria Multi-Categorias</h1>
+<h1>Gerador de Páginas HTML SEO para Imagens</h1>
 
-<!-- Categorias -->
-<div class="categories">
-  <button class="category-btn" onclick="filterCategory('Todos')">Todos</button>
-  <button class="category-btn" onclick="filterCategory('Filmes')">Filmes</button>
-  <button class="category-btn" onclick="filterCategory('Música')">Música</button>
-  <button class="category-btn" onclick="filterCategory('Jogos')">Jogos</button>
-  <button class="category-btn" onclick="filterCategory('Notícias')">Notícias</button>
-  <button class="category-btn" onclick="filterCategory('Outros')">Outros</button>
-</div>
+<form id="pageForm">
+  <input type="text" id="pageTitle" placeholder="Título da página / site" required>
+  <input type="text" id="imageTitle" placeholder="Título da imagem" required>
+  <input type="url" id="imageURL" placeholder="URL da imagem" required>
+  <input type="text" id="imageAlt" placeholder="ALT da imagem (descrição SEO)" required>
+  <textarea id="imageDescription" placeholder="Descrição completa da imagem (SEO)" required></textarea>
+  <input type="text" id="category" placeholder="Categoria (Filmes, Música...)" required>
+  <input type="url" id="link" placeholder="Link da página do filme/jogo/música" required>
+  <button type="submit">Gerar HTML</button>
+</form>
 
-<!-- Botão admin oculto -->
-<button id="showAdminBtn">🔒 Login Admin</button>
-
-<!-- Login admin -->
-<div id="loginForm" style="display:none;">
-  <input type="text" id="adminName" placeholder="Nome de usuário">
-  <input type="password" id="adminPass" placeholder="Senha">
-  <button id="loginBtn">Entrar</button>
-  <p id="loginMsg" style="color:red;"></p>
-</div>
-
-<!-- Painel admin -->
-<div id="adminPanel" style="display:none;">
-  <form id="addImageForm">
-    <input type="text" id="title" placeholder="Título da imagem" required>
-    <input type="text" id="category" placeholder="Categoria (Filmes, Música, Jogos...)" required>
-    <input type="url" id="link" placeholder="Link" required>
-    <input type="url" id="img" placeholder="URL da imagem" required>
-    <input type="text" id="alt" placeholder="ALT da imagem" required>
-    <textarea id="description" placeholder="Descrição da imagem" required></textarea>
-    <button type="submit">Adicionar Imagem</button>
-  </form>
-</div>
-
-<h2>Galeria</h2>
-<div class="grid" id="gallery"></div>
+<h2>Código HTML Gerado</h2>
+<pre id="output"></pre>
 
 <script src="script.js"></script>
 </body>
