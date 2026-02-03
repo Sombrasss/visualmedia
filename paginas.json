@@ -1,0 +1,14 @@
+[
+  {
+    "titulo": "Que Horas Eu Te Pego",
+    "url": "que-horas-eu-te-pego.html",
+    "imagem": "imagens/filme1.jpg",
+    "data": "2026-02-01"
+  },
+  {
+    "titulo": "Filme Exemplo",
+    "url": "filme-exemplo.html",
+    "imagem": "imagens/filme2.jpg",
+    "data": "2026-01-28"
+  }
+]
