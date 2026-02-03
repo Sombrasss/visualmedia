@@ -2,79 +2,39 @@
 <html lang="pt-PT">
 <head>
   <meta charset="UTF-8">
-  <title>Admin – MediaPosters</title>
+  <title>MediaPosters – Galeria e Admin</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Admin – MediaPosters</h1>
+<h1>MediaPosters – Galeria de Filmes</h1>
 
-<form id="addImageForm">
-  <input type="text" id="title" placeholder="Título do filme" required>
-  <input type="text" id="year" placeholder="Ano" required>
-  <input type="url" id="link" placeholder="Link do filme" required>
-  <input type="url" id="img" placeholder="URL da imagem" required>
-  <input type="text" id="alt" placeholder="ALT da imagem" required>
-  <textarea id="description" placeholder="Descrição da imagem" required></textarea>
-  <button type="submit">Adicionar Imagem</button>
-</form>
+<!-- Botão secreto para exibir login admin -->
+<button id="showAdminBtn">🔒 Login Admin</button>
 
-<h2>Galeria Admin</h2>
-<div class="grid" id="adminGallery"></div>
+<!-- Formulário de login -->
+<div id="loginForm" style="display:none; max-width:300px; margin:10px auto;">
+  <input type="text" id="adminName" placeholder="Nome de usuário">
+  <input type="password" id="adminPass" placeholder="Senha">
+  <button id="loginBtn">Entrar</button>
+  <p id="loginMsg" style="color:red;"></p>
+</div>
 
-<script>
-const form = document.getElementById('addImageForm');
-const adminGallery = document.getElementById('adminGallery');
+<!-- Formulário de adicionar imagem (só aparece depois de logar) -->
+<div id="adminPanel" style="display:none; max-width:500px; margin:20px auto;">
+  <form id="addImageForm">
+    <input type="text" id="title" placeholder="Título do filme" required>
+    <input type="text" id="year" placeholder="Ano" required>
+    <input type="url" id="link" placeholder="Link do filme" required>
+    <input type="url" id="img" placeholder="URL da imagem" required>
+    <input type="text" id="alt" placeholder="ALT da imagem" required>
+    <textarea id="description" placeholder="Descrição da imagem" required></textarea>
+    <button type="submit">Adicionar Imagem</button>
+  </form>
+</div>
 
-let images = JSON.parse(localStorage.getItem('images')) || [];
+<h2>Galeria de Filmes</h2>
+<div class="grid" id="gallery"></div>
 
-function renderGallery() {
-  adminGallery.innerHTML = '';
-  images.forEach((img, index) => {
-    adminGallery.innerHTML += `
-      <div class="card">
-        <img src="${img.img}" alt="${img.alt}">
-        <p>${img.description}</p>
-        <button onclick="editImage(${index})">Editar</button>
-        <button onclick="deleteImage(${index})">Excluir</button>
-      </div>`;
-  });
-}
-
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  const newImage = {
-    title: form.title.value,
-    year: form.year.value,
-    link: form.link.value,
-    img: form.img.value,
-    alt: form.alt.value,
-    description: form.description.value
-  };
-  images.push(newImage);
-  localStorage.setItem('images', JSON.stringify(images));
-  form.reset();
-  renderGallery();
-});
-
-function deleteImage(index) {
-  images.splice(index, 1);
-  localStorage.setItem('images', JSON.stringify(images));
-  renderGallery();
-}
-
-function editImage(index) {
-  const img = images[index];
-  form.title.value = img.title;
-  form.year.value = img.year;
-  form.link.value = img.link;
-  form.img.value = img.img;
-  form.alt.value = img.alt;
-  form.description.value = img.description;
-  deleteImage(index);
-}
-
-renderGallery();
-</script>
+<script src="script.js"></script>
 </body>
 </html>
-
