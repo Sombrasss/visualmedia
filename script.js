@@ -1,8 +1,6 @@
-// ==========================
 // CONFIGURAÇÃO DE LOGIN
-// ==========================
-const USER = 'admin'; // nome do admin
-const PASS = '1234';   // senha do admin
+const USER = 'admin'; 
+const PASS = '1234'; 
 
 const showAdminBtn = document.getElementById('showAdminBtn');
 const loginForm = document.getElementById('loginForm');
@@ -14,9 +12,7 @@ showAdminBtn.addEventListener('click', () => {
   loginForm.style.display = 'block';
 });
 
-// ==========================
 // LOGIN
-// ==========================
 loginBtn.addEventListener('click', () => {
   const name = document.getElementById('adminName').value;
   const pass = document.getElementById('adminPass').value;
@@ -24,21 +20,19 @@ loginBtn.addEventListener('click', () => {
   if(name === USER && pass === PASS){
     loginForm.style.display = 'none';
     adminPanel.style.display = 'block';
-    loadGallery();
+    renderGallery();
   } else {
     loginMsg.textContent = 'Usuário ou senha incorretos';
   }
 });
 
-// ==========================
 // GALERIA
-// ==========================
 let images = JSON.parse(localStorage.getItem('images')) || [];
 
 const gallery = document.getElementById('gallery');
 const addForm = document.getElementById('addImageForm');
 
-function renderGallery() {
+function renderGallery(){
   gallery.innerHTML = '';
   images.forEach((img, index) => {
     gallery.innerHTML += `
@@ -53,9 +47,7 @@ function renderGallery() {
   });
 }
 
-// ==========================
-// ADD IMAGEM
-// ==========================
+// ADICIONAR IMAGEM
 addForm.addEventListener('submit', e => {
   e.preventDefault();
   const newImage = {
@@ -72,9 +64,7 @@ addForm.addEventListener('submit', e => {
   renderGallery();
 });
 
-// ==========================
-// EDITAR E EXCLUIR
-// ==========================
+// EDITAR / EXCLUIR
 function deleteImage(index){
   images.splice(index, 1);
   localStorage.setItem('images', JSON.stringify(images));
@@ -92,11 +82,5 @@ function editImage(index){
   deleteImage(index);
 }
 
-// ==========================
 // CARREGAR GALERIA INICIAL
-// ==========================
-function loadGallery(){
-  renderGallery();
-}
-
-loadGallery();
+renderGallery();
