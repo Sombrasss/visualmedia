@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
-  <meta charset="UTF-8">
-  <title>MediaPosters – Galeria e Admin</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>MediaPosters – Que Horas Eu Te Pego</title>
+<meta name="description" content="Poster oficial do filme Que Horas Eu Te Pego (2024). Veja a imagem em alta qualidade e descrição detalhada.">
+<meta name="robots" content="index, follow">
+
+<!-- OpenGraph -->
+<meta property="og:title" content="Que Horas Eu Te Pego">
+<meta property="og:description" content="Poster oficial do filme Que Horas Eu Te Pego (2024). Veja a imagem em alta qualidade e descrição detalhada.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://teusite.com/imagens/que-horas-eu-te-pego-poster.jpg">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Que Horas Eu Te Pego">
+<meta name="twitter:description" content="Poster oficial do filme Que Horas Eu Te Pego (2024). Veja a imagem em alta qualidade e descrição detalhada.">
+<meta name="twitter:image" content="https://teusite.com/imagens/que-horas-eu-te-pego-poster.jpg">
+
+<style>
+body { font-family: Arial, sans-serif; background:#111; color:#fff; margin:0; padding:20px; }
+h1,h2 { text-align:center; }
+img { display:block; margin:20px auto; max-width:100%; height:auto; }
+p { max-width:600px; margin:10px auto; font-size:16px; line-height:1.4; }
+a { color:#00bcd4; text-decoration:none; display:block; text-align:center; margin:10px 0; }
+</style>
 </head>
 <body>
-<h1>MediaPosters – Galeria de Filmes</h1>
 
-<!-- Botão secreto para exibir login admin -->
-<button id="showAdminBtn">🔒 Login Admin</button>
+<h1>Que Horas Eu Te Pego</h1>
+<p>Categoria: Filmes</p>
+<a href="https://teusite.com/filme/que-horas-eu-te-pego" target="_blank">
+  <img src="https://teusite.com/imagens/que-horas-eu-te-pego-poster.jpg" alt="Poster do filme Que Horas Eu Te Pego – 2024">
+</a>
+<p>Poster oficial do filme Que Horas Eu Te Pego (2024). Veja a imagem em alta qualidade e descrição detalhada.</p>
+<a href="https://seusitegithub.github.io/">Voltar ao site principal</a>
 
-<!-- Formulário de login -->
-<div id="loginForm" style="display:none; max-width:300px; margin:10px auto;">
-  <input type="text" id="adminName" placeholder="Nome de usuário">
-  <input type="password" id="adminPass" placeholder="Senha">
-  <button id="loginBtn">Entrar</button>
-  <p id="loginMsg" style="color:red;"></p>
-</div>
-
-<!-- Formulário de adicionar imagem (só aparece depois de logar) -->
-<div id="adminPanel" style="display:none; max-width:500px; margin:20px auto;">
-  <form id="addImageForm">
-    <input type="text" id="title" placeholder="Título do filme" required>
-    <input type="text" id="year" placeholder="Ano" required>
-    <input type="url" id="link" placeholder="Link do filme" required>
-    <input type="url" id="img" placeholder="URL da imagem" required>
-    <input type="text" id="alt" placeholder="ALT da imagem" required>
-    <textarea id="description" placeholder="Descrição da imagem" required></textarea>
-    <button type="submit">Adicionar Imagem</button>
-  </form>
-</div>
-
-<h2>Galeria de Filmes</h2>
-<div class="grid" id="gallery"></div>
-
-<script src="script.js"></script>
 </body>
 </html>
