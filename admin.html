@@ -2,43 +2,18 @@
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<title>Editor de Página SEO – Gerador</title>
+<title>Gerador de Página Conectada</title>
 
 <style>
 body {
-  font-family: Arial, sans-serif;
-  background:#111;
+  font-family: Arial;
+  background:#0d0d0d;
   color:#fff;
   margin:0;
   padding:20px;
 }
-h1 { text-align:center; }
-input, textarea {
-  width:100%;
-  padding:10px;
-  margin:5px 0 15px;
-  border-radius:5px;
-  border:none;
-}
-label { font-weight:bold; }
-button {
-  background:#00bcd4;
-  border:none;
-  padding:12px;
-  color:#000;
-  font-weight:bold;
-  cursor:pointer;
-  width:100%;
-  border-radius:5px;
-}
-button:hover { background:#0097a7; }
 
-textarea#output {
-  height:400px;
-  background:#000;
-  color:#0f0;
-  font-family:monospace;
-}
+h1 { text-align:center; }
 
 section {
   background:#1c1c1c;
@@ -46,62 +21,77 @@ section {
   margin-bottom:20px;
   border-radius:8px;
 }
+
+input, textarea {
+  width:100%;
+  padding:10px;
+  margin:5px 0 15px;
+  border:none;
+  border-radius:5px;
+}
+
+button {
+  width:100%;
+  padding:12px;
+  font-weight:bold;
+  background:#00bcd4;
+  border:none;
+  cursor:pointer;
+  border-radius:5px;
+}
+
+textarea#output {
+  height:420px;
+  background:#000;
+  color:#00ff00;
+  font-family:monospace;
+}
 </style>
 </head>
 
 <body>
 
-<h1>Gerador de Página SEO</h1>
+<h1>Gerador de Página Conectada</h1>
 
 <section>
-<h2>SEO Básico</h2>
+<h2>SEO</h2>
 
-<label>Título da página</label>
+<label>Título</label>
 <input id="title">
 
-<label>Meta descrição</label>
-<textarea id="description"></textarea>
+<label>Descrição</label>
+<textarea id="desc"></textarea>
 
 <label>Palavras-chave</label>
-<input id="keywords">
+<input id="keys">
 
 <label>URL da página</label>
 <input id="url">
 
-<label>Imagem principal (poster)</label>
-<input id="image">
+<label>Imagem principal</label>
+<input id="img">
 </section>
 
 <section>
-<h2>Conteúdo da Página</h2>
+<h2>Conteúdo</h2>
 
-<label>Título visível (H1)</label>
+<label>Título H1</label>
 <input id="h1">
 
-<label>Título seção poster</label>
-<input id="posterTitle">
+<label>Texto principal</label>
+<textarea id="text"></textarea>
 
-<label>Texto do poster</label>
-<textarea id="posterText"></textarea>
+<label>Link relacionado 1</label>
+<input id="link1">
 
-<label>Título seção imagens</label>
-<input id="imagesTitle">
+<label>Link relacionado 2</label>
+<input id="link2">
 
-<label>Descrição detalhada</label>
-<textarea id="longText"></textarea>
-
-<label>Link oficial</label>
-<input id="officialLink">
+<label>Link relacionado 3</label>
+<input id="link3">
 </section>
 
-<section>
-<h2>Rodapé</h2>
-
-<label>Texto do footer</label>
-<input id="footer">
-</section>
-
-<button onclick="generate()">GERAR CÓDIGO HTML</button>
+<button onclick="gerar()">GERAR PÁGINA</button>
 
 <section>
 <h2>Código Final</h2>
@@ -109,85 +99,104 @@ section {
 </section>
 
 <script>
-function generate() {
+function gerar(){
 
 const title = document.getElementById("title").value;
-const description = document.getElementById("description").value;
-const keywords = document.getElementById("keywords").value;
+const desc = document.getElementById("desc").value;
+const keys = document.getElementById("keys").value;
 const url = document.getElementById("url").value;
-const image = document.getElementById("image").value;
-
+const img = document.getElementById("img").value;
 const h1 = document.getElementById("h1").value;
-const posterTitle = document.getElementById("posterTitle").value;
-const posterText = document.getElementById("posterText").value;
-const imagesTitle = document.getElementById("imagesTitle").value;
-const longText = document.getElementById("longText").value;
-const officialLink = document.getElementById("officialLink").value;
-const footer = document.getElementById("footer").value;
+const text = document.getElementById("text").value;
+const link1 = document.getElementById("link1").value;
+const link2 = document.getElementById("link2").value;
+const link3 = document.getElementById("link3").value;
 
 const html = `<!DOCTYPE html>
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
 <title>${title}</title>
-<meta name="description" content="${description}">
-<meta name="keywords" content="${keywords}">
+
+<meta name="description" content="${desc}">
+<meta name="keywords" content="${keys}">
 <meta name="robots" content="index, follow">
 
 <meta property="og:title" content="${title}">
-<meta property="og:description" content="${description}">
-<meta property="og:type" content="website">
+<meta property="og:description" content="${desc}">
 <meta property="og:url" content="${url}">
-<meta property="og:image" content="${image}">
+<meta property="og:image" content="${img}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${title}">
-<meta name="twitter:description" content="${description}">
-<meta name="twitter:image" content="${image}">
+<meta name="twitter:description" content="${desc}">
+<meta name="twitter:image" content="${img}">
 
 <style>
-body { font-family: Arial, sans-serif; background:#111; color:#fff; margin:0; padding:20px; }
-header { text-align:center; margin-bottom:30px; }
-h1 { font-size:28px; }
-h2 { text-align:center; margin-top:30px; }
-main { max-width:1000px; margin:auto; }
-img { display:block; margin:20px auto; max-width:100%; border-radius:5px; }
-p { max-width:800px; margin:auto; }
-a { color:#00bcd4; }
-footer { text-align:center; margin-top:40px; }
+body { font-family:Arial; background:#111; color:#fff; margin:0; }
+header { background:#000; padding:15px; text-align:center; }
+nav a { color:#00bcd4; margin:0 10px; text-decoration:none; }
+main { max-width:1000px; margin:auto; padding:20px; }
+img { max-width:100%; display:block; margin:20px auto; border-radius:6px; }
+.card { background:#1c1c1c; padding:15px; border-radius:8px; margin-top:20px; }
+footer { text-align:center; padding:20px; background:#000; margin-top:40px; }
+.btn-home {
+display:inline-block;
+margin-top:20px;
+padding:10px;
+background:#00bcd4;
+color:#000;
+text-decoration:none;
+border-radius:5px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>${h1}</h1>
+<nav>
+<a href="index.html">🏠 Home</a>
+<a href="filmes.html">Filmes</a>
+<a href="noticias.html">Notícias</a>
+</nav>
 </header>
 
 <main>
 
-<section>
-<h2>${posterTitle}</h2>
-<img src="${image}">
-<p>${posterText}</p>
-</section>
+<h1>${h1}</h1>
 
-<section>
-<h2>${imagesTitle}</h2>
-<p>${longText}</p>
-<p><a href="${officialLink}" target="_blank">Página oficial</a></p>
-</section>
+<img src="${img}">
+
+<div class="card">
+<p>${text}</p>
+<a class="btn-home" href="index.html">Voltar para Home</a>
+</div>
+
+<div class="card">
+<h2>Veja também</h2>
+<ul>
+<li><a href="${link1}">${link1}</a></li>
+<li><a href="${link2}">${link2}</a></li>
+<li><a href="${link3}">${link3}</a></li>
+</ul>
+</div>
 
 </main>
 
 <footer>
-<p>${footer}</p>
+<p>© 2026 SeuSite – Todos os direitos reservados</p>
 </footer>
 
 </body>
 </html>`;
 
 document.getElementById("output").value = html;
+}
+</script>
+
+</body>
+</html>`;
 }
 </script>
 
