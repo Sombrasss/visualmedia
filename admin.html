@@ -2,87 +2,194 @@
 <html lang="pt-PT">
 <head>
 <meta charset="UTF-8">
-<title>Que Horas Eu Te Pego – Posters, Imagens e Capas</title>
-<meta name="description" content="Confira posters, capas e imagens do filme Que Horas Eu Te Pego (2024). Imagens em alta qualidade com descrição completa para fãs de cinema.">
-<meta name="keywords" content="Que Horas Eu Te Pego, poster filme, imagens de filmes, capas de filmes, cinema 2024, posters online">
-<meta name="robots" content="index, follow">
-<meta name="author" content="MediaPosters">
+<title>Editor de Página SEO – Gerador</title>
 
-<!-- OpenGraph -->
-<meta property="og:title" content="Que Horas Eu Te Pego – Poster Oficial">
-<meta property="og:description" content="Poster oficial, capas e imagens do filme Que Horas Eu Te Pego (2024). Confira imagens exclusivas.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://seusitegithub.github.io/que-horas-eu-te-pego.html">
-<meta property="og:image" content="https://teusite.com/imagens/que-horas-eu-te-pego-poster.jpg">
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background:#111;
+  color:#fff;
+  margin:0;
+  padding:20px;
+}
+h1 { text-align:center; }
+input, textarea {
+  width:100%;
+  padding:10px;
+  margin:5px 0 15px;
+  border-radius:5px;
+  border:none;
+}
+label { font-weight:bold; }
+button {
+  background:#00bcd4;
+  border:none;
+  padding:12px;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+  width:100%;
+  border-radius:5px;
+}
+button:hover { background:#0097a7; }
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Que Horas Eu Te Pego – Poster Oficial">
-<meta name="twitter:description" content="Poster oficial, capas e imagens do filme Que Horas Eu Te Pego (2024). Confira imagens exclusivas.">
-<meta name="twitter:image" content="https://teusite.com/imagens/que-horas-eu-te-pego-poster.jpg">
+textarea#output {
+  height:400px;
+  background:#000;
+  color:#0f0;
+  font-family:monospace;
+}
 
-<link rel="stylesheet" href="style.css">
+section {
+  background:#1c1c1c;
+  padding:15px;
+  margin-bottom:20px;
+  border-radius:8px;
+}
+</style>
 </head>
+
+<body>
+
+<h1>Gerador de Página SEO</h1>
+
+<section>
+<h2>SEO Básico</h2>
+
+<label>Título da página</label>
+<input id="title">
+
+<label>Meta descrição</label>
+<textarea id="description"></textarea>
+
+<label>Palavras-chave</label>
+<input id="keywords">
+
+<label>URL da página</label>
+<input id="url">
+
+<label>Imagem principal (poster)</label>
+<input id="image">
+</section>
+
+<section>
+<h2>Conteúdo da Página</h2>
+
+<label>Título visível (H1)</label>
+<input id="h1">
+
+<label>Título seção poster</label>
+<input id="posterTitle">
+
+<label>Texto do poster</label>
+<textarea id="posterText"></textarea>
+
+<label>Título seção imagens</label>
+<input id="imagesTitle">
+
+<label>Descrição detalhada</label>
+<textarea id="longText"></textarea>
+
+<label>Link oficial</label>
+<input id="officialLink">
+</section>
+
+<section>
+<h2>Rodapé</h2>
+
+<label>Texto do footer</label>
+<input id="footer">
+</section>
+
+<button onclick="generate()">GERAR CÓDIGO HTML</button>
+
+<section>
+<h2>Código Final</h2>
+<textarea id="output"></textarea>
+</section>
+
+<script>
+function generate() {
+
+const title = document.getElementById("title").value;
+const description = document.getElementById("description").value;
+const keywords = document.getElementById("keywords").value;
+const url = document.getElementById("url").value;
+const image = document.getElementById("image").value;
+
+const h1 = document.getElementById("h1").value;
+const posterTitle = document.getElementById("posterTitle").value;
+const posterText = document.getElementById("posterText").value;
+const imagesTitle = document.getElementById("imagesTitle").value;
+const longText = document.getElementById("longText").value;
+const officialLink = document.getElementById("officialLink").value;
+const footer = document.getElementById("footer").value;
+
+const html = `<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<title>${title}</title>
+<meta name="description" content="${description}">
+<meta name="keywords" content="${keywords}">
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="${url}">
+<meta property="og:image" content="${image}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${title}">
+<meta name="twitter:description" content="${description}">
+<meta name="twitter:image" content="${image}">
+
+<style>
+body { font-family: Arial, sans-serif; background:#111; color:#fff; margin:0; padding:20px; }
+header { text-align:center; margin-bottom:30px; }
+h1 { font-size:28px; }
+h2 { text-align:center; margin-top:30px; }
+main { max-width:1000px; margin:auto; }
+img { display:block; margin:20px auto; max-width:100%; border-radius:5px; }
+p { max-width:800px; margin:auto; }
+a { color:#00bcd4; }
+footer { text-align:center; margin-top:40px; }
+</style>
+</head>
+
 <body>
 
 <header>
-  <h1>Que Horas Eu Te Pego – Posters e Imagens</h1>
-  <nav>
-    <a href="https://seusitegithub.github.io/">Home</a> |
-    <a href="https://seusitegithub.github.io/filmes.html">Filmes</a> |
-    <a href="https://seusitegithub.github.io/musica.html">Música</a> |
-    <a href="https://seusitegithub.github.io/jogos.html">Jogos</a> |
-    <a href="https://seusitegithub.github.io/noticias.html">Notícias</a>
-  </nav>
+<h1>${h1}</h1>
 </header>
 
 <main>
-  <section>
-    <h2>Poster Oficial</h2>
-    <a href="https://teusite.com/filme/que-horas-eu-te-pego" target="_blank">
-      <img src="https://teusite.com/imagens/que-horas-eu-te-pego-poster.jpg" alt="Poster oficial do filme Que Horas Eu Te Pego – 2024">
-    </a>
-    <p>Poster oficial do filme <strong>Que Horas Eu Te Pego (2024)</strong>. Imagem em alta resolução, perfeita para fãs e colecionadores.</p>
-  </section>
 
-  <section>
-    <h2>Capas e Imagens</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://teusite.com/imagens/que-horas-eu-te-pego-capa.jpg" alt="Capa promocional do filme Que Horas Eu Te Pego – 2024">
-        <p>Capa promocional mostrando os personagens principais e detalhes do filme.</p>
-      </div>
-      <!-- Você pode adicionar mais cards aqui -->
-    </div>
-  </section>
+<section>
+<h2>${posterTitle}</h2>
+<img src="${image}">
+<p>${posterText}</p>
+</section>
 
-  <section>
-    <h2>Descrição Detalhada</h2>
-    <p><strong>Que Horas Eu Te Pego</strong> é um filme de 2024 que conta a história de...</p>
-    <p>Para mais detalhes, acesse a página oficial do filme: <a href="https://teusite.com/filme/que-horas-eu-te-pego" target="_blank">Clique aqui</a>.</p>
-  </section>
+<section>
+<h2>${imagesTitle}</h2>
+<p>${longText}</p>
+<p><a href="${officialLink}" target="_blank">Página oficial</a></p>
+</section>
+
 </main>
 
 <footer>
-  <p style="text-align:center;">© 2026 MediaPosters – Todos os direitos reservados</p>
+<p>${footer}</p>
 </footer>
 
-<style>
-body { font-family: Arial, sans-serif; background:#111; color:#fff; margin:0; padding:20px; line-height:1.6; }
-header { text-align:center; margin-bottom:30px; }
-h1 { font-size:28px; margin-bottom:10px; }
-h2 { font-size:22px; margin-top:30px; text-align:center; }
-nav a { color:#00bcd4; text-decoration:none; margin:0 10px; }
-nav a:hover { text-decoration:underline; }
-main { max-width:1000px; margin:0 auto; }
-img { display:block; margin:20px auto; max-width:100%; height:auto; border-radius:5px; }
-p { max-width:800px; margin:10px auto; font-size:16px; }
-a { color:#00bcd4; text-decoration:none; }
-a:hover { text-decoration:underline; }
-.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:15px; margin-top:20px; }
-.card { background:#1c1c1c; padding:10px; border-radius:8px; }
-.card img { margin:0; border-radius:5px; }
-</style>
+</body>
+</html>`;
+
+document.getElementById("output").value = html;
+}
+</script>
 
 </body>
 </html>
