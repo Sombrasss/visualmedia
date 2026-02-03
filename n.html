@@ -1,87 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Últimos Jogos Adicionados – Jogos Online Atualizados 2026</title>
-
-<meta name="description" content="Veja os últimos jogos adicionados. Lista atualizada com capas, imagens otimizadas para Google e acesso rápido aos jogos mais populares.">
-<meta name="keywords" content="jogos online, jogos novos, jogos 2026, baixar jogos, jogos grátis, catálogo de jogos">
-
-<link rel="canonical" href="https://seusite.com/index.html">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Últimos Jogos Adicionados">
-<meta property="og:description" content="Lista atualizada dos jogos mais recentes.">
-<meta property="og:type" content="website">
+<title>Últimos Jogos Adicionados – Diversão e Lançamentos 2026</title>
+<meta name="description" content="Confira os últimos jogos adicionados: ação, corrida, aventura, esportes e multiplayer. Atualizações diárias com capas otimizadas para Google Imagens.">
+<meta name="keywords" content="jogos online, novos jogos 2026, jogos multiplayer, jogos grátis, catálogo de jogos">
 
 <style>
 body{
-font-family:Arial;
-background:#0f0f0f;
-color:#fff;
-margin:0;
-padding:20px;
+  font-family:Arial;
+  background:#0a0a0a;
+  color:#fff;
+  margin:0;
+  padding:20px;
 }
-
 h1,h2,h3{text-align:center}
-
 .intro{
-max-width:900px;
-margin:auto;
-text-align:center;
-color:#ccc;
-line-height:1.6;
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+  color:#ccc;
+  line-height:1.6;
 }
-
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:15px;
-margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+  margin-top:25px;
 }
-
 .card{
-background:#1c1c1c;
-border-radius:8px;
-overflow:hidden;
-transition:0.3s;
+  background:#1c1c1c;
+  border-radius:12px;
+  overflow:hidden;
+  transition:0.3s;
+  cursor:pointer;
+  position:relative;
 }
-
 .card:hover{
-transform:scale(1.05);
+  transform:scale(1.05);
+  box-shadow:0 0 20px #00bcd4;
 }
-
 .card img{
-width:100%;
-height:220px;
-object-fit:cover;
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
 }
-
 .card h3{
-padding:10px;
-font-size:14px;
-text-align:center;
+  padding:8px 10px 0 10px;
+  font-size:16px;
+  text-align:center;
 }
-
+.card p{
+  font-size:12px;
+  padding:5px 10px 10px 10px;
+  color:#aaa;
+  text-align:center;
+}
+.tag-new{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#00bcd4;
+  color:#000;
+  padding:5px 8px;
+  font-size:10px;
+  font-weight:bold;
+  border-radius:5px;
+}
 a{text-decoration:none;color:white}
-footer{text-align:center;margin-top:40px;color:#777}
+footer{text-align:center;margin-top:40px;color:#777;line-height:1.6}
 </style>
-
-<!-- Schema.org -->
-<script type="application/ld+json">
-{
-"@context":"https://schema.org",
-"@type":"CollectionPage",
-"name":"Últimos Jogos Adicionados",
-"description":"Catálogo com os jogos mais recentes adicionados ao site"
-}
-</script>
-
 </head>
-
 <body>
 
 <header>
@@ -89,61 +80,76 @@ footer{text-align:center;margin-top:40px;color:#777}
 </header>
 
 <section class="intro">
-<h2>Jogos Novos Atualizados Diariamente</h2>
-<p>
-Aqui você encontra os jogos mais recentes adicionados ao catálogo.
-Todas as capas são otimizadas para aparecer no Google Imagens,
-permitindo que os jogadores encontrem rapidamente os títulos mais populares.
-Nosso sistema atualiza automaticamente os jogos em alta.
-</p>
+<h2>Jogos Novos e Populares</h2>
+<p>Explore os últimos lançamentos do nosso catálogo de jogos online. Cada jogo tem capa otimizada para Google Imagens e descrições que facilitam a busca. Clique e divirta-se agora!</p>
 </section>
 
 <section>
-<h2>Catálogo de Jogos Recentes</h2>
-<div class="grid" id="lista"></div>
-</section>
+<h2>Catálogo de Jogos</h2>
+<div class="grid" id="lista">
 
-<section class="intro">
-<h2>Jogos em Alta 2026</h2>
-<p>
-Explore jogos de ação, aventura, corrida, esportes e multiplayer.
-Atualizamos constantemente para garantir que você veja sempre os
-lançamentos mais procurados nos motores de busca.
-</p>
+<!-- Exemplo de jogos -->
+<a href="gta-6.html">
+<div class="card">
+<span class="tag-new">Novo</span>
+<img src="imagens/gta-6.jpg" alt="GTA 6 jogo online 2026" title="GTA 6">
+<h3>GTA 6</h3>
+<p>Ação e aventura no mundo aberto mais esperado do ano.</p>
+</div>
+</a>
+
+<a href="fifa-26.html">
+<div class="card">
+<span class="tag-new">Novo</span>
+<img src="imagens/fifa-26.jpg" alt="FIFA 26 jogo online 2026" title="FIFA 26">
+<h3>FIFA 26</h3>
+<p>O clássico futebol com gráficos incríveis e modos multiplayer.</p>
+</div>
+</a>
+
+<a href="call-of-duty.html">
+<div class="card">
+<span class="tag-new">Novo</span>
+<img src="imagens/cod.jpg" alt="Call of Duty jogo online 2026" title="Call of Duty">
+<h3>Call of Duty</h3>
+<p>Tiro em primeira pessoa com missões épicas e multiplayer intenso.</p>
+</div>
+</a>
+
+<a href="mario-kart.html">
+<div class="card">
+<span class="tag-new">Novo</span>
+<img src="imagens/mario-kart.jpg" alt="Mario Kart jogo online 2026" title="Mario Kart">
+<h3>Mario Kart</h3>
+<p>Corridas divertidas e desafios frenéticos com personagens clássicos.</p>
+</div>
+</a>
+
+<a href="zelda.html">
+<div class="card">
+<span class="tag-new">Novo</span>
+<img src="imagens/zelda.jpg" alt="Zelda jogo online 2026" title="Zelda">
+<h3>Zelda</h3>
+<p>Aventura épica no reino de Hyrule com quebra-cabeças e exploração.</p>
+</div>
+</a>
+
+<a href="minecraft.html">
+<div class="card">
+<span class="tag-new">Novo</span>
+<img src="imagens/minecraft.jpg" alt="Minecraft jogo online 2026" title="Minecraft">
+<h3>Minecraft</h3>
+<p>Construa, explore e sobreviva neste universo infinito de blocos.</p>
+</div>
+</a>
+
+</div>
 </section>
 
 <footer>
-<p>© 2026 Catálogo de Jogos – Atualizações diárias</p>
+<p>© 2026 Catálogo de Jogos Online – Atualizações diárias</p>
+<p>Capas e imagens otimizadas para Google Imagens. Todos os direitos reservados.</p>
 </footer>
-
-<script>
-fetch("paginas.json")
-.then(r => r.json())
-.then(data => {
-
-data.sort((a,b)=> new Date(b.data) - new Date(a.data));
-let ultimas = data.slice(0,20);
-
-const lista = document.getElementById("lista");
-
-ultimas.forEach(p => {
-
-lista.innerHTML += `
-<a href="${p.url}" title="${p.titulo}">
-<div class="card">
-<img loading="lazy"
-src="${p.imagem}"
-alt="Capa do jogo ${p.titulo} jogo online 2026"
-title="${p.titulo} jogo online">
-<h3>${p.titulo}</h3>
-</div>
-</a>
-`;
-
-});
-
-});
-</script>
 
 </body>
 </html>
