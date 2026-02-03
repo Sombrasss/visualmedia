@@ -1,22 +1,19 @@
 // CONFIGURAÇÃO DE LOGIN
-const USER = 'admin'; 
-const PASS = '1234'; 
+const USER = 'admin';
+const PASS = '1234';
 
 const showAdminBtn = document.getElementById('showAdminBtn');
 const loginForm = document.getElementById('loginForm');
 const loginBtn = document.getElementById('loginBtn');
 const loginMsg = document.getElementById('loginMsg');
 const adminPanel = document.getElementById('adminPanel');
+const gallery = document.getElementById('gallery');
 
-showAdminBtn.addEventListener('click', () => {
-  loginForm.style.display = 'block';
-});
+showAdminBtn.addEventListener('click', () => loginForm.style.display = 'block');
 
-// LOGIN
 loginBtn.addEventListener('click', () => {
   const name = document.getElementById('adminName').value;
   const pass = document.getElementById('adminPass').value;
-
   if(name === USER && pass === PASS){
     loginForm.style.display = 'none';
     adminPanel.style.display = 'block';
@@ -26,15 +23,13 @@ loginBtn.addEventListener('click', () => {
   }
 });
 
-// GALERIA
+// CARREGAR IMAGENS DO LOCALSTORAGE
 let images = JSON.parse(localStorage.getItem('images')) || [];
 
-const gallery = document.getElementById('gallery');
-const addForm = document.getElementById('addImageForm');
-
+// FUNÇÃO PARA RENDERIZAR GALERIA (HTML estatico para SEO)
 function renderGallery(){
   gallery.innerHTML = '';
-  images.forEach((img, index) => {
+  images.forEach((img,index) => {
     gallery.innerHTML += `
       <div class="card">
         <a href="${img.link}" target="_blank">
@@ -48,6 +43,7 @@ function renderGallery(){
 }
 
 // ADICIONAR IMAGEM
+const addForm = document.getElementById('addImageForm');
 addForm.addEventListener('submit', e => {
   e.preventDefault();
   const newImage = {
@@ -64,9 +60,9 @@ addForm.addEventListener('submit', e => {
   renderGallery();
 });
 
-// EDITAR / EXCLUIR
+// EXCLUIR / EDITAR
 function deleteImage(index){
-  images.splice(index, 1);
+  images.splice(index,1);
   localStorage.setItem('images', JSON.stringify(images));
   renderGallery();
 }
@@ -82,5 +78,5 @@ function editImage(index){
   deleteImage(index);
 }
 
-// CARREGAR GALERIA INICIAL
+// RENDER INICIAL PARA SEO
 renderGallery();
