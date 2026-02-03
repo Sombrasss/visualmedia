@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerador de Sitemap XML</title>
+
+<style>
+body{font-family:Arial;background:#111;color:#fff;padding:20px}
+textarea,input{width:100%;padding:10px;margin:10px 0;border-radius:5px;border:none}
+button{width:100%;padding:12px;background:#00bcd4;border:none;font-weight:bold;cursor:pointer;border-radius:5px}
+#output{height:300px;background:#000;color:#0f0;font-family:monospace}
+section{background:#1c1c1c;padding:15px;border-radius:8px}
+</style>
+</head>
+
+<body>
+
+<h1>Gerador de Sitemap Automático</h1>
+
+<section>
+
+<label>Domínio do site</label>
+<input id="domain" placeholder="https://seusite.com">
+
+<label>URLs (uma por linha)</label>
+<textarea id="urls" placeholder="index.html
+filmes.html
+que-horas-eu-te-pego.html"></textarea>
+
+<button onclick="gerar()">GERAR SITEMAP</button>
+
+</section>
+
+<h2>Sitemap XML</h2>
+<textarea id="output"></textarea>
+
+<script>
+function gerar(){
+
+const domain = document.getElementById("domain").value.trim();
+const urls = document.getElementById("urls").value.split("\n");
+
+let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+
+for(let i=0;i<urls.length;i++){
+let u = urls[i].trim();
+if(u !== ""){
+xml += "  <url>\n";
+xml += "    <loc>"+domain+"/"+u+"</loc>\n";
+xml += "    <changefreq>weekly</changefreq>\n";
+xml += "    <priority>0.8</priority>\n";
+xml += "  </url>\n";
+}
+}
+
+xml += '</urlset>';
+
+document.getElementById("output").value = xml;
+}
+</script>
+
+</body>
+</html>
