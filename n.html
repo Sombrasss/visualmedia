@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Últimos Filmes Adicionados</title>
-<meta name="description" content="Veja os últimos filmes adicionados no site. Atualizações recentes com imagens e links diretos.">
+<title>Últimos Jogos Adicionados – Jogos Online Atualizados 2026</title>
+
+<meta name="description" content="Veja os últimos jogos adicionados. Lista atualizada com capas, imagens otimizadas para Google e acesso rápido aos jogos mais populares.">
+<meta name="keywords" content="jogos online, jogos novos, jogos 2026, baixar jogos, jogos grátis, catálogo de jogos">
+
+<link rel="canonical" href="https://seusite.com/index.html">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Últimos Jogos Adicionados">
+<meta property="og:description" content="Lista atualizada dos jogos mais recentes.">
+<meta property="og:type" content="website">
 
 <style>
 body{
@@ -16,13 +26,21 @@ margin:0;
 padding:20px;
 }
 
-h1{text-align:center}
+h1,h2,h3{text-align:center}
+
+.intro{
+max-width:900px;
+margin:auto;
+text-align:center;
+color:#ccc;
+line-height:1.6;
+}
 
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
 gap:15px;
-margin-top:20px;
+margin-top:25px;
 }
 
 .card{
@@ -49,14 +67,54 @@ text-align:center;
 }
 
 a{text-decoration:none;color:white}
+footer{text-align:center;margin-top:40px;color:#777}
 </style>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+"@context":"https://schema.org",
+"@type":"CollectionPage",
+"name":"Últimos Jogos Adicionados",
+"description":"Catálogo com os jogos mais recentes adicionados ao site"
+}
+</script>
+
 </head>
 
 <body>
 
-<h1>Últimas Adições</h1>
+<header>
+<h1>Últimos Jogos Adicionados</h1>
+</header>
 
+<section class="intro">
+<h2>Jogos Novos Atualizados Diariamente</h2>
+<p>
+Aqui você encontra os jogos mais recentes adicionados ao catálogo.
+Todas as capas são otimizadas para aparecer no Google Imagens,
+permitindo que os jogadores encontrem rapidamente os títulos mais populares.
+Nosso sistema atualiza automaticamente os jogos em alta.
+</p>
+</section>
+
+<section>
+<h2>Catálogo de Jogos Recentes</h2>
 <div class="grid" id="lista"></div>
+</section>
+
+<section class="intro">
+<h2>Jogos em Alta 2026</h2>
+<p>
+Explore jogos de ação, aventura, corrida, esportes e multiplayer.
+Atualizamos constantemente para garantir que você veja sempre os
+lançamentos mais procurados nos motores de busca.
+</p>
+</section>
+
+<footer>
+<p>© 2026 Catálogo de Jogos – Atualizações diárias</p>
+</footer>
 
 <script>
 fetch("paginas.json")
@@ -71,9 +129,12 @@ const lista = document.getElementById("lista");
 ultimas.forEach(p => {
 
 lista.innerHTML += `
-<a href="${p.url}">
+<a href="${p.url}" title="${p.titulo}">
 <div class="card">
-<img src="${p.imagem}" alt="${p.titulo}">
+<img loading="lazy"
+src="${p.imagem}"
+alt="Capa do jogo ${p.titulo} jogo online 2026"
+title="${p.titulo} jogo online">
 <h3>${p.titulo}</h3>
 </div>
 </a>
