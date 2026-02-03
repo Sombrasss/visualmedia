@@ -3,31 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>MediaPosters – Posters e Imagens de Filmes</title>
-  <meta name="description" content="MediaPosters é uma galeria de posters, capas e imagens de filmes e séries, otimizada para SEO.">
+  <meta name="description" content="MediaPosters é uma galeria de posters, capas e imagens de filmes e séries, otimizada para SEO com títulos e descrições únicas.">
   <meta name="robots" content="index, follow">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Posters e Imagens de Filmes</h1>
+<h1>MediaPosters – Galeria de Filmes</h1>
+
+<!-- Botão secreto para exibir login admin -->
+<button id="showAdminBtn">🔒 Login Admin</button>
+
+<!-- Formulário de login -->
+<div id="loginForm" style="display:none;">
+  <input type="text" id="adminName" placeholder="Nome de usuário">
+  <input type="password" id="adminPass" placeholder="Senha">
+  <button id="loginBtn">Entrar</button>
+  <p id="loginMsg" style="color:red;"></p>
+</div>
+
+<!-- Painel admin -->
+<div id="adminPanel" style="display:none;">
+  <form id="addImageForm">
+    <input type="text" id="title" placeholder="Título do filme" required>
+    <input type="text" id="year" placeholder="Ano" required>
+    <input type="url" id="link" placeholder="Link do filme" required>
+    <input type="url" id="img" placeholder="URL da imagem" required>
+    <input type="text" id="alt" placeholder="ALT da imagem" required>
+    <textarea id="description" placeholder="Descrição da imagem" required></textarea>
+    <button type="submit">Adicionar Imagem</button>
+  </form>
+</div>
+
+<h2>Galeria de Filmes</h2>
 <div class="grid" id="gallery"></div>
 
-<script>
-async function loadImages() {
-  const res = await fetch('seo-images.json');
-  const images = await res.json();
-  const gallery = document.getElementById('gallery');
-  gallery.innerHTML = '';
-  images.forEach(img => {
-    gallery.innerHTML += `
-      <div class="card">
-        <a href="${img.link}" target="_blank">
-          <img src="${img.img}" alt="${img.alt}">
-        </a>
-        <p>${img.description}</p>
-      </div>`;
-  });
-}
-loadImages();
-</script>
+<script src="script.js"></script>
 </body>
 </html>
