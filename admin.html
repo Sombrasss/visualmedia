@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin – MediaPosters</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Admin – MediaPosters</h1>
+
+<form id="addImageForm">
+  <input type="text" id="title" placeholder="Título do filme" required>
+  <input type="text" id="year" placeholder="Ano" required>
+  <input type="url" id="link" placeholder="Link do filme" required>
+  <input type="url" id="img" placeholder="URL da imagem" required>
+  <input type="text" id="alt" placeholder="ALT da imagem" required>
+  <textarea id="description" placeholder="Descrição da imagem" required></textarea>
+  <button type="submit">Adicionar Imagem</button>
+</form>
+
+<h2>Galeria Admin</h2>
+<div class="grid" id="adminGallery"></div>
+
+<script>
+const form = document.getElementById('addImageForm');
+const adminGallery = document.getElementById('adminGallery');
+
+let images = JSON.parse(localStorage.getItem('images')) || [];
+
+function renderGallery() {
+  adminGallery.innerHTML = '';
+  images.forEach((img, index) => {
+    adminGallery.innerHTML += `
+      <div class="card">
+        <img src="${img.img}" alt="${img.alt}">
+        <p>${img.description}</p>
+        <button onclick="editImage(${index})">Editar</button>
+        <button onclick="deleteImage(${index})">Excluir</button>
+      </div>`;
+  });
+}
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const newImage = {
+    title: form.title.value,
+    year: form.year.value,
+    link: form.link.value,
+    img: form.img.value,
+    alt: form.alt.value,
+    description: form.description.value
+  };
+  images.push(newImage);
+  localStorage.setItem('images', JSON.stringify(images));
+  form.reset();
+  renderGallery();
+});
+
+function deleteImage(index) {
+  images.splice(index, 1);
+  localStorage.setItem('images', JSON.stringify(images));
+  renderGallery();
+}
+
+function editImage(index) {
+  const img = images[index];
+  form.title.value = img.title;
+  form.year.value = img.year;
+  form.link.value = img.link;
+  form.img.value = img.img;
+  form.alt.value = img.alt;
+  form.description.value = img.description;
+  deleteImage(index);
+}
+
+renderGallery();
+</script>
+</body>
+</html>
+
