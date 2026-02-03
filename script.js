@@ -26,20 +26,27 @@ loginBtn.addEventListener('click', () => {
 // CARREGAR IMAGENS DO LOCALSTORAGE
 let images = JSON.parse(localStorage.getItem('images')) || [];
 
-// FUNÇÃO PARA RENDERIZAR GALERIA (HTML estatico para SEO)
-function renderGallery(){
+// FUNÇÃO RENDERIZAR GALERIA
+function renderGallery(category = 'Todos'){
   gallery.innerHTML = '';
   images.forEach((img,index) => {
-    gallery.innerHTML += `
-      <div class="card">
-        <a href="${img.link}" target="_blank">
-          <img src="${img.img}" alt="${img.alt}">
-        </a>
-        <p>${img.description}</p>
-        ${adminPanel.style.display === 'block' ? `<button onclick="editImage(${index})">Editar</button>
-        <button onclick="deleteImage(${index})">Excluir</button>` : ''}
-      </div>`;
+    if(category === 'Todos' || img.category === category){
+      gallery.innerHTML += `
+        <div class="card">
+          <a href="${img.link}" target="_blank">
+            <img src="${img.img}" alt="${img.alt}">
+          </a>
+          <p>${img.description}</p>
+          ${adminPanel.style.display === 'block' ? `<button onclick="editImage(${index})">Editar</button>
+          <button onclick="deleteImage(${index})">Excluir</button>` : ''}
+        </div>`;
+    }
   });
+}
+
+// FILTRAR POR CATEGORIA
+function filterCategory(category){
+  renderGallery(category);
 }
 
 // ADICIONAR IMAGEM
@@ -48,7 +55,7 @@ addForm.addEventListener('submit', e => {
   e.preventDefault();
   const newImage = {
     title: addForm.title.value,
-    year: addForm.year.value,
+    category: addForm.category.value,
     link: addForm.link.value,
     img: addForm.img.value,
     alt: addForm.alt.value,
@@ -60,7 +67,7 @@ addForm.addEventListener('submit', e => {
   renderGallery();
 });
 
-// EXCLUIR / EDITAR
+// EDITAR / EXCLUIR
 function deleteImage(index){
   images.splice(index,1);
   localStorage.setItem('images', JSON.stringify(images));
@@ -70,7 +77,7 @@ function deleteImage(index){
 function editImage(index){
   const img = images[index];
   addForm.title.value = img.title;
-  addForm.year.value = img.year;
+  addForm.category.value = img.category;
   addForm.link.value = img.link;
   addForm.img.value = img.img;
   addForm.alt.value = img.alt;
@@ -78,5 +85,5 @@ function editImage(index){
   deleteImage(index);
 }
 
-// RENDER INICIAL PARA SEO
+// RENDER INICIAL
 renderGallery();
