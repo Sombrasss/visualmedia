@@ -20,7 +20,7 @@
 
   <!-- Exemplos de trailers dinâmicos (IMPORTANTE PARA SEO) -->
   <url>
-    <loc>https://https://sombrasss.github.io/visualmedia/noticias.html</loc>
+    <loc>https://sombrasss.github.io/visualmedia/noticias.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
