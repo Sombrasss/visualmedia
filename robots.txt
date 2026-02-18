@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sombrasss.github.io/visualmedia/sitemap.xml
+Sitemap: https://helpful-melba-16ce0a.netlify.app/sitemap.xml
