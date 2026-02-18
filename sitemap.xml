@@ -1,32 +1,40 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://sombrasss.github.io/visualmedia/index.html</loc>
-<lastmod>2026-02-12</lastmod>
-<changefreq>daily</changefreq>
-<priority>1.0</priority>
-</url>
+  <!-- Página principal -->
+  <url>
+    <loc>https://sombrasss.github.io/visualmedia/</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-<url>
-<loc>https://sombrasss.github.io/visualmedia/filmes.html</loc>
-<lastmod>2026-02-12</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.9</priority>
-</url>
+  <!-- Página de trailers -->
+  <url>
+    <loc>https://sombrasss.github.io/visualmedia/filmes.html</loc>
+    <lastmod>2025-12-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-<url>
-<loc>https://sombrasss.github.io/visualmedia/noticias.html</loc>
-<lastmod>2026-02-12</lastmod>
-<changefreq>hourly</changefreq>
-<priority>0.9</priority>
-</url>
+  <!-- Exemplos de trailers dinâmicos (IMPORTANTE PARA SEO) -->
+  <url>
+    <loc>https://https://sombrasss.github.io/visualmedia/noticias.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-<url>
-<loc>https://sombrasss.github.io/visualmedia/jogos-olimpicos-inverno-2026-snowboard-feminino-halfpipe.html</loc>
-<lastmod>2026-02-12</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
+  <url>
+    <loc>https://https://sombrasss.github.io/visualmedia/jogos-olimpicos-inverno-2026-snowboard-feminino-halfpipe.html
+</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+ 
 
 </urlset>
+
+
+
