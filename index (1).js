@@ -1,95 +1,41 @@
-firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-        window.location.href = "home.html";
-    }
-})
+<!doctype html>
+<html>
 
-function onChangeEmail() {
-    toggleButtonsDisable();
-    toggleEmailErrors();
-}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-function onChangePassword() {
-    toggleButtonsDisable();
-    togglePasswordErrors();
-}
+    <title>Comunidade Sempre Online</title>
 
-function login() {
-    showLoading();
-    firebase.auth().signInWithEmailAndPassword(
-        form.email().value, form.password().value
-    ).then(() => {
-        hideLoading();
-        window.location.href = "home.html";
-    }).catch(error => {
-        hideLoading();
-        alert(getErrorMessage(error));
-    });
-}
+    <link rel="stylesheet" href="style.css">
+</head>
 
-function register() {
-    window.location.href = "register.html";
-}
+<body>
 
-function recoverPassword() {
-    showLoading();
-    firebase.auth().sendPasswordResetEmail(form.email().value).then(() => {
-        hideLoading();
-        alert('Email enviado com sucesso');
-    }).catch(error => {
-        hideLoading();
-        alert(getErrorMessage(error));
-    });
-}
+    <!-- FUNDO ESCURO SOBRE A IMAGEM -->
+    <div class="overlay"></div>
 
-function getErrorMessage(error) {
-    if (error.code == "auth/user-not-found") {
-        return "Usuário nao encontrado";
-    }
-    if (error.code == "auth/wrong-password") {
-        return "Senha inválida";
-    }
-    return error.message;
-}
+    <!-- HEADER COM LOGO -->
+    <header class="top-header">
+        <img src="icong.png" alt="Logotipo" class="logo">
+    </header>
 
-function toggleEmailErrors() {
-    const email = form.email().value;
-    form.emailRequiredError().style.display = email ? "none" : "block";
-    
-    form.emailInvalidError().style.display = validateEmail(email) ? "none" : "block";
-}
+    <!-- FORMULÁRIO -->
+    <div class="centralize">
+        <form>
+            <div class="form-field">
+                <label>Email</label>
+                <input type="email" placeholder="seu@email.com">
+            </div>
 
-function togglePasswordErrors() {
-    const password = form.password().value;
-    form.passwordRequiredError().style.display = password ? "none" : "block";
-}
+            <div class="form-field">
+                <label>Senha</label>
+                <input type="password" placeholder="Senha">
+            </div>
 
-function toggleButtonsDisable() {
-    const emailValid = isEmailValid();
-    form.recoverPasswordButton().disabled = !emailValid;
+            <button type="button" class="solid">Entrar</button>
+            <button type="button" class="outline">Registrar</button>
+        </form>
+    </div>
 
-    const passwordValid = isPasswordValid();
-    form.loginButton().disabled = !emailValid || !passwordValid;
-}
-
-function isEmailValid() {
-    const email = form.email().value;
-    if (!email) {
-        return false;
-    }
-    return validateEmail(email);
-}
-
-function isPasswordValid() {
-    return form.password().value ? true : false;
-}
-
-const form = {
-    email: () => document.getElementById("email"),
-    emailInvalidError: () => document.getElementById("email-invalid-error"),
-    emailRequiredError: () => document.getElementById("email-required-error"),
-    loginButton: () => document.getElementById("login-button"),
-    password: () => document.getElementById("password"),
-    passwordRequiredError: () => document.getElementById("password-required-error"),
-    recoverPasswordButton: () => document.getElementById("recover-password-button"),
-} 
+</body>
+</html>
