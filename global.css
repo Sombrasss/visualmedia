@@ -1,29 +1,50 @@
-/* Reset */
-body {
+/* RESET */
+* {
     margin: 0;
-    background: #121212;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* HEADER FIXO */
+/* IMAGEM DE FUNDO */
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background: url("background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    position: relative;
+}
+
+/* CAMADA ESCURA PARA DAR EFEITO PROFISSIONAL */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* HEADER */
 .top-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 70px;
-    background: #121212;
     display: flex;
     align-items: center;
     padding-left: 20px;
-    border-bottom: 1px solid #1f1f1f;
-    z-index: 1000;
+    z-index: 2;
 }
 
+/* LOGO RESPONSIVO TIPO FACEBOOK */
 .logo {
     height: 45px;
     width: auto;
+    max-width: 180px;
+    object-fit: contain;
 }
 
 /* CENTRALIZAÇÃO */
@@ -32,78 +53,60 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    padding-top: 70px;
+    position: relative;
+    z-index: 2;
+    padding: 20px;
 }
 
-/* FORM */
+/* FORMULÁRIO */
 form {
     width: 100%;
     max-width: 400px;
-    background: #1e1e1e;
+    background: rgba(0, 0, 0, 0.75);
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
 }
 
+/* CAMPOS */
 .form-field {
     margin-bottom: 15px;
     display: flex;
     flex-direction: column;
 }
 
-/* INPUTS */
-input,
-button {
-   padding: 12px;
-   background-color: #1e1e1e;
-   color: #ffffff;
-   border: 1px solid #333;
-   border-radius: 4px;
-   font-size: 14px;
-}
-
-input:focus {
-    outline: none;
-    border-color: #2dd36f;
+input {
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    margin-top: 5px;
+    font-size: 14px;
 }
 
 /* BOTÕES */
 button {
+    padding: 12px;
     margin-top: 10px;
+    border-radius: 6px;
+    border: none;
     cursor: pointer;
+    font-weight: bold;
     transition: 0.3s;
 }
 
-button:active {
-    opacity: 0.8;
-}
-
-button[disabled] {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-.clear {
-    background: transparent;
-    border: none;
-    color: #bbbbbb;
-}
-
 .solid {
-    background: #2dd36f;
-    border: none;
-    color: black;
-    font-weight: bold;
+    background: #1877f2; /* Azul estilo Facebook */
+    color: white;
 }
 
 .solid:hover {
-    background: #28ba60;
+    background: #0f5ddf;
 }
 
 .outline {
     background: transparent;
-    color: white;
     border: 1px solid white;
+    color: white;
 }
 
 .outline:hover {
@@ -111,27 +114,15 @@ button[disabled] {
     color: black;
 }
 
-/* ERROS */
-.error {
-    background: red;
-    color: white;
-    display: none;
-    padding: 8px;
-    border-radius: 4px;
-    margin-top: 8px;
-    font-size: 13px;
-}
+/* RESPONSIVO PARA CELULAR */
+@media (max-width: 600px) {
 
-/* LOADING */
-.loading {
-    background: rgba(0, 0, 0, 0.7);
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    z-index: 999;
-}
-.loading label {
-    font-size: 24px;
-    color: white;
+    .logo {
+        height: 35px;
+        max-width: 130px;
+    }
+
+    form {
+        padding: 20px;
+    }
 }
