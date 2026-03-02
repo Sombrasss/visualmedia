@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Mini Rede Social (LocalStorage)</title>
+<style>
+body{font-family:Arial;background:#121212;color:#fff;margin:0;padding:0}
+header{background:#1f1f1f;padding:10px;text-align:center;font-size:20px}
+.container{max-width:900px;margin:auto;padding:10px}
+textarea,input{width:100%;padding:8px;margin:5px 0;border-radius:5px;border:none}
+button{padding:6px 10px;border:none;border-radius:5px;cursor:pointer}
+.post{background:#1e1e1e;margin:10px 0;padding:10px;border-radius:8px}
+.small{font-size:12px;color:#aaa}
+.actions button{margin-right:5px}
+.comment{background:#2a2a2a;padding:5px;margin-top:5px;border-radius:5px}
+.chat{background:#1e1e1e;padding:10px;margin-top:10px;border-radius:8px}
+.notif{background:#2b2b00;padding:5px;margin:5px 0;border-radius:5px;color:#ff0}
+</style>
+</head>
+
+<body>
+<header>Mini Rede Social (Tudo no Navegador)</header>
+<div class="container">
+
+<h3>👤 Seu nome</h3>
+<input id="username" placeholder="Digite seu nome">
+<button onclick="saveUser()">Salvar</button>
+
+<h3>✏️ Criar Post</h3>
+<textarea id="postText" placeholder="O que estás a pensar?"></textarea>
+<input id="postImg" placeholder="URL da imagem (opcional)">
+<button onclick="createPost()">Publicar</button>
+
+<h3>🔔 Notificações</h3>
+<div id="notifications"></div>
+
+<h3>📰 Feed</h3>
+<div id="feed"></div>
+
+<h3>💬 Mensagens Privadas</h3>
+<input id="chatUser" placeholder="Nome do usuário">
+<textarea id="chatMsg" placeholder="Mensagem"></textarea>
+<button onclick="sendMsg()">Enviar</button>
+<div id="chats"></div>
+
+</div>
+
+<script>
+let user = localStorage.getItem("user") || "";
+let posts = JSON.parse(localStorage.getItem("posts")||"[]");
+let chats = JSON.parse(localStorage.getItem("chats")||"[]");
+let notifs = JSON.parse(localStorage.getItem("notifs")||"[]");
+
+document.getElementById("username").value = user;
+
+function save(){
+ localStorage.setItem("posts",JSON.stringify(posts));
+ localStorage.setItem("chats",JSON.stringify(chats));
+ localStorage.setItem("notifs",JSON.stringify(notifs));
+}
+
+function saveUser(){
+ user = document.getElementById("username").value;
+ localStorage.setItem("user",user);
+ alert("Usuário salvo");
+}
+
+function notify(text){
+ notifs.unshift(text);
+ save();
+ renderNotifs();
+}
+
+function createPost(){
+ if(!user) return alert("Define o nome primeiro");
+ posts.unshift({
+  id:Date.now(),
+  user,
+  text:postText.value,
+  img:postImg.value,
+  likes:[],
+  comments:[],
+  date:new Date().toLocaleString()
+ });
+ postText.value="";
+ postImg.value="";
+ save();
+ renderFeed();
+}
+
+function like(id){
+ let p = posts.find(x=>x.id===id);
+ if(!p.likes.includes(user)){
+  p.likes.push(user);
+  notify(user+" curtiu um post");
+ }
+ save();
+ renderFeed();
+}
+
+function comment(id){
+ let txt = prompt("Comentário:");
+ if(!txt) return;
+ let p = posts.find(x=>x.id===id);
+ p.comments.push({user,text:txt});
+ notify(user+" comentou um post");
+ save();
+ renderFeed();
+}
+
+function del(id){
+ posts = posts.filter(p=>p.id!==id);
+ save();
+ renderFeed();
+}
+
+function renderFeed(){
+ feed.innerHTML="";
+ posts.forEach(p=>{
+  feed.innerHTML+=`
+  <div class="post">
+   <b>${p.user}</b> <span class="small">${p.date}</span>
+   <p>${p.text}</p>
+   ${p.img?`<img src="${p.img}" style="max-width:100%">`:""}
+   <div class="actions">
+    <button onclick="like(${p.id})">👍 ${p.likes.length}</button>
+    <button onclick="comment(${p.id})">💬 ${p.comments.length}</button>
+    <button onclick="navigator.clipboard.writeText(location.href)">🔗</button>
+    ${p.user===user?`<button onclick="del(${p.id})">🗑</button>`:""}
+   </div>
+   ${p.comments.map(c=>`<div class="comment"><b>${c.user}:</b> ${c.text}</div>`).join("")}
+  </div>`;
+ });
+}
+
+function sendMsg(){
+ let to = chatUser.value;
+ let txt = chatMsg.value;
+ if(!to||!txt) return;
+ chats.push({from:user,to,text:txt,date:new Date().toLocaleString()});
+ notify("Nova mensagem enviada");
+ chatMsg.value="";
+ save();
+ renderChats();
+}
+
+function renderChats(){
+ chatsDiv.innerHTML="";
+ chats.forEach(c=>{
+  chatsDiv.innerHTML+=`
+  <div class="chat">
+   <b>${c.from} ➜ ${c.to}</b>
+   <p>${c.text}</p>
+   <span class="small">${c.date}</span>
+  </div>`;
+ });
+}
+
+function renderNotifs(){
+ notifications.innerHTML="";
+ notifs.forEach(n=>{
+  notifications.innerHTML+=`<div class="notif">${n}</div>`;
+ });
+}
+
+renderFeed();
+renderChats();
+renderNotifs();
+</script>
+</body>
+</html>
