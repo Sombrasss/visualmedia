@@ -5,7 +5,7 @@ firebase.auth().onAuthStateChanged(user => {
 })
 
 function goToLogin() {
-  window.location.href = "index1.html"; // Altere para o caminho correto da sua página de login
+  window.location.href = "index.html"; // Altere para o caminho correto da sua página de login
 }
 
 
