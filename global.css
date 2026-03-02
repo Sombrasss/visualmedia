@@ -1,20 +1,24 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* FUNDO TOTAL */
+/* FUNDO DA PÁGINA */
 body {
     font-family: Arial, sans-serif;
-    height: 100vh;
     background: url("background.jpg") no-repeat center center fixed;
     background-size: cover;
-    color: white;
+    color: #ffffff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
 }
 
-/* CAMADA ESCURA */
+/* CAMADA ESCURA SOBRE A IMAGEM */
 .overlay {
     position: fixed;
     width: 100%;
@@ -25,34 +29,28 @@ body {
     z-index: 0;
 }
 
-/* HEADER */
+/* HEADER FIXO */
 .top-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 55px;
     display: flex;
     align-items: center;
     padding-left: 20px;
     z-index: 2;
 }
 
-/* LOGO PEQUENO ESTILO FACEBOOK */
+/* LOGOTIPO PEQUENO ESTILO FACEBOOK */
 .logo {
-    height: 28px;   /* pequeno e elegante */
+    height: 28px;
     width: auto;
 }
 
 /* CENTRALIZAÇÃO */
 .centralize {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-    z-index: 2;
-    padding: 20px;
+    width: 100%;
 }
 
 /* FORMULÁRIO */
@@ -63,37 +61,52 @@ form {
     padding: 30px;
     border-radius: 8px;
     backdrop-filter: blur(6px);
+    position: relative;
+    z-index: 2;
 }
 
 /* CAMPOS */
 .form-field {
     margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
 }
 
-input {
+input,
+button,
+select {
     padding: 12px;
+    width: 100%;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #333;
     border-radius: 6px;
-    border: none;
-    margin-top: 5px;
     font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #1877f2;
 }
 
 /* BOTÕES */
 button {
-    padding: 12px;
     margin-top: 10px;
-    border-radius: 6px;
-    border: none;
     cursor: pointer;
-    font-weight: bold;
     transition: 0.3s;
 }
 
-/* Recuperar senha */
+button:active {
+    opacity: 0.8;
+}
+
+button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* RECUPERAR SENHA */
 .clear {
     background: transparent;
+    border: none;
     color: #1877f2;
     text-align: left;
     padding-left: 0;
@@ -103,17 +116,19 @@ button {
     text-decoration: underline;
 }
 
-/* Entrar */
+/* ENTRAR */
 .solid {
     background: #1877f2;
+    border: none;
     color: white;
+    font-weight: bold;
 }
 
 .solid:hover {
     background: #0f5ddf;
 }
 
-/* Registrar */
+/* REGISTRAR */
 .outline {
     background: transparent;
     border: 1px solid white;
@@ -125,14 +140,39 @@ button {
     color: black;
 }
 
+/* ERROS */
+.error {
+    background: red;
+    color: white;
+    display: none;
+    padding: 8px;
+    border-radius: 4px;
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+/* LOADING */
+.loading {
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 999;
+}
+.loading label {
+    font-size: 24px;
+    color: white;
+}
+
 /* RESPONSIVO */
 @media (max-width: 600px) {
 
-    .logo {
-        height: 24px;
-    }
-
     form {
         padding: 20px;
+    }
+
+    .logo {
+        height: 24px;
     }
 }
